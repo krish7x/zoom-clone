@@ -5,7 +5,7 @@
 
 .main {
 	display: flex;
-	height: 100vh;
+	height: 100%;
 	font-family: 'Nunito', sans-serif;
 }
 
@@ -136,26 +136,23 @@ video {
 	}
 }
 
-@media (max-width: 550px) {
-	body {
-		height: 100%;
-	}
-	.main {
-		width: 100%;
-		height: 260vh;
-	}
-}
-
 @media (max-width: 770px) {
 	.main {
 		width: 100%;
-		height: 110vh;
+		height: 200vh;
 	}
 }
 
-@media (max-width: 705px) {
+@media (max-width: 400px) {
 	.main {
 		width: 100%;
-		height: 110vh;
+		height: 210vh;
+	}
+}
+
+@media (max-width: 302px) {
+	.main {
+		width: 100%;
+		height: 300vh;
 	}
 }
