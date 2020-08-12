@@ -112,10 +112,13 @@ video {
 .messages {
 	color: #fff;
 	list-style: none;
+	text-align: start;
+	margin-left: 20px;
 }
 
 .message__text {
 	margin-left: 10px;
+	text-align: center;
 }
 
 .unmute {

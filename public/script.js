@@ -64,7 +64,7 @@ $('html').keydown((event) => {
 });
 
 socket.on('createmessage', (msg) => {
-	$('ul').append(`<li class = "message"><b>user :</b><span class = "message__text"><br />${msg}</span></li>`);
+	$('ul').append(`<li class = "message"><b>users :</b><span class = "message__text">${msg}</span></li>`);
 	scrollDown();
 });
 
