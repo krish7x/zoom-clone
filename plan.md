@@ -17,7 +17,7 @@
 NodeJs
 ejs 
 SocketIO
-PureJs
+PeerJs 
 ExpressJs
 UUID
 
@@ -27,3 +27,4 @@ UUID
 ejs --> used to embed html with backend using render method and using the directory by use method
 http -->  server waits for the clients req and sends back the response as JSON or XML
 socket io --> server doesn't wait here more likely a two way communication (It's a engine)
+peerJs --> peer to peer connection using WebRTC

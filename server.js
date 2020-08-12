@@ -1,15 +1,22 @@
 const express = require('express');
 const app = express();
 const server = require('http').Server(app);
-const { v4: uuidv4 } = require('uuid');
-const { Socket } = require('dgram');
 const io = require('socket.io')(server);
+const { ExpressPeerServer } = require('peer');
+const peerServer = ExpressPeerServer(server, {
+	debug: true
+});
 
-//tells the app to use public directory to render
-app.use(express.static('public'));
+const { v4: uuidv4 } = require('uuid');
+
+//tells peerJs to use this server
+app.use('/peerjs', peerServer);
 
 //setting the view engine for rendering
 app.set('view engine', 'ejs');
+
+//tells the app to use public directory to render
+app.use(express.static('public'));
 
 //redirecting to unique room ID
 app.get('/', (req, res) => {
@@ -23,8 +30,13 @@ app.get('/:room', (req, res) => {
 
 //establishing the connection
 io.on('connection', (socket) => {
-	socket.on('join-room', () => {
+	socket.on('join-room', (roomId, userId) => {
+		socket.join(roomId);
+		socket.to(roomId).broadcast.emit('user-connected', userId);
 		console.log('Joined the room');
+		socket.on('message', (msg) => {
+			io.to(roomId).emit('createmessage', msg);
+		});
 	});
 });
 
